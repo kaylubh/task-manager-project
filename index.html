@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+  </head>
+  <body>
+    <header>
+      <h1>Task Manager</h1>
+    </header>
+    <main>
+      <section class="task-input">
+        <form class="task-input-form">
+          <input
+            type="text"
+            id="task-name"
+            name="task-name"
+            placeholder="Enter task name"
+            required />
+          <select id="task-priority" name="task-priority" required>
+            <option value="" disabled selected>Select priority</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <input type="checkbox" id="is-important" name="is-important" />
+          <label for="is-important">Important?</label>
+          <button type="submit">Add Task</button>
+        </form>
+      </section>
+      <section class="tasks-display">
+        <div id="taskmanager">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Priority</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
