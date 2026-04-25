@@ -1,5 +1,3 @@
-'use strict';
-
 export function createTaskRow(taskDetails) {
   const taskRow = document.createElement('tr');
 
@@ -23,7 +21,7 @@ function createTaskCell(content) {
 function createTaskDateCell(date) {
   const cell = document.createElement('td');
 
-  currentDate = new Date();
+  const currentDate = new Date();
   if (date.toDateString() === currentDate.toDateString()) {
     cell.innerHTML = 'Today';
   } else if (

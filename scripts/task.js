@@ -1,6 +1,12 @@
-'use strict';
-
 export class Task {
+  // Private Fields
+  #name;
+  #priority;
+  #isImportant;
+  #isCompleted;
+  #dateCreated;
+  #id;
+
   // Constructor
   constructor(name, priority, isImportant) {
     this.#name = name;
@@ -12,7 +18,7 @@ export class Task {
   }
 
   #generateId() {
-    idName = this.#name.replace(/\s+/g, '').toLowerCase(); // remove whitespace and convert to lowercase
+    const idName = this.#name.replace(/\s+/g, '').toLowerCase(); // remove whitespace and convert to lowercase
     return `${idName}-${this.#dateCreated.toISOString()}`;
   }
 

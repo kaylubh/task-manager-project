@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/main.js" type="module"></script>
     <title>Task Manager</title>
   </head>
   <body>
@@ -10,8 +12,8 @@
       <h1>Task Manager</h1>
     </header>
     <main>
-      <section class="task-input">
-        <form class="task-input-form">
+      <section id="task-panel">
+        <form id="task-add-form">
           <input
             type="text"
             id="task-name"
@@ -24,12 +26,12 @@
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
-          <input type="checkbox" id="is-important" name="is-important" />
-          <label for="is-important">Important?</label>
+          <input type="checkbox" id="task-important" name="task-important" />
+          <label for="task-important">Important?</label>
           <button type="submit">Add Task</button>
         </form>
       </section>
-      <section class="tasks-display">
+      <section id="task-list">
         <div id="taskmanager">
           <table>
             <thead>
