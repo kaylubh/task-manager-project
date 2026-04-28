@@ -4,10 +4,12 @@ export function createTaskRow(taskDetails) {
   const nameCell = createTaskCell(taskDetails.name);
   const priorityCell = createTaskCell(taskDetails.priority);
   const dateCell = createTaskDateCell(taskDetails.dateCreated);
+  const actionButtonsCell = createActionsButtons();
 
   taskRow.appendChild(nameCell);
   taskRow.appendChild(priorityCell);
   taskRow.appendChild(dateCell);
+  taskRow.appendChild(actionButtonsCell);
 
   return taskRow;
 }
@@ -22,16 +24,33 @@ function createTaskDateCell(date) {
   const cell = document.createElement('td');
 
   const currentDate = new Date();
-  if (date.toDateString() === currentDate.toDateString()) {
-    cell.innerHTML = 'Today';
-  } else if (
-    date.toDateString() ===
-    new Date(currentDate.getTime() - 86400000).toDateString()
-  ) {
-    cell.innerHTML = 'Yesterday';
-  } else {
-    cell.innerHTML = date.toLocaleDateString();
-  }
+  cell.innerHTML = date.toLocaleDateString();
+
+  return cell;
+}
+
+function createActionsButtons() {
+  // Action buttons group
+  const cell = document.createElement('td');
+  const buttonGroup = document.createElement('div');
+  buttonGroup.classList.add('btn-group');
+
+  // Complete Button
+  const completeButton = document.createElement('button');
+  completeButton.innerHTML = 'Complete';
+  buttonGroup.appendChild(completeButton);
+
+  // Edit Button
+  const editButton = document.createElement('button');
+  editButton.innerHTML = 'Edit';
+  buttonGroup.appendChild(editButton);
+
+  // Delete Button
+  const deleteButton = document.createElement('button');
+  deleteButton.innerHTML = 'Delete';
+  buttonGroup.appendChild(deleteButton);
+
+  cell.appendChild(buttonGroup);
 
   return cell;
 }
