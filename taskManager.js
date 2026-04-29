@@ -97,7 +97,21 @@ function createTaskRow(taskDetails) {
   taskRow.appendChild(dateCell);
   taskRow.appendChild(actionButtonsCell);
 
-  
+  // Conditionally add CSS classes for completed, important, and priority status
+  if (taskDetails.isCompleted) {
+    taskRow.classList.add('completed');
+  }
+  if (taskDetails.isImportant) {
+    taskRow.classList.add('important');
+  }
+
+  if (taskDetails.priority === 'High') {
+    taskRow.classList.add('high-priority');
+  } else if (taskDetails.priority === 'Medium') {
+    taskRow.classList.add('medium-priority');
+  } else if (taskDetails.priority === 'Low') {
+    taskRow.classList.add('low-priority');
+  }
 
   return taskRow;
 }
@@ -132,22 +146,28 @@ function createActionsButtons(taskDetails) {
   // Complete Checkbox
   const completeCheckbox = document.createElement('input');
   completeCheckbox.type = 'checkbox';
+  const completeLabel = document.createElement('label');
+  completeLabel.innerHTML = 'Complete';
   completeCheckbox.classList.add('complete-checkbox');
   completeCheckbox.id = `${taskId}`;
   if (taskCompleted) {
     completeCheckbox.checked = true;
   }
   buttonGroup.appendChild(completeCheckbox);
+  buttonGroup.appendChild(completeLabel);
 
   // Important Checkbox
   const importantCheckbox = document.createElement('input');
   importantCheckbox.type = 'checkbox';
+  const importantLabel = document.createElement('label');
+  importantLabel.innerHTML = 'Important';
   importantCheckbox.classList.add('important-checkbox');
   importantCheckbox.id = `${taskId}`;
   if (taskImportant) {
     importantCheckbox.checked = true;
   }
   buttonGroup.appendChild(importantCheckbox);
+  buttonGroup.appendChild(importantLabel);
 
   // Delete Button
   const deleteButton = document.createElement('button');
