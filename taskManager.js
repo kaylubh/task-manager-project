@@ -98,19 +98,24 @@ function createTaskRow(taskDetails) {
   taskRow.appendChild(actionButtonsCell);
 
   // Conditionally add CSS classes for completed, important, and priority status
-  if (taskDetails.isCompleted) {
-    taskRow.classList.add('completed');
-  }
-  if (taskDetails.isImportant) {
-    taskRow.classList.add('important');
-  }
-
   if (taskDetails.priority === 'High') {
     taskRow.classList.add('high-priority');
   } else if (taskDetails.priority === 'Medium') {
     taskRow.classList.add('medium-priority');
   } else if (taskDetails.priority === 'Low') {
     taskRow.classList.add('low-priority');
+  }
+
+  if (taskDetails.isCompleted) {
+    taskRow.classList.add('completed');
+  }
+  if (taskDetails.isImportant) {
+    taskRow.classList.add('important');
+    taskRow.classList.remove(
+      'high-priority',
+      'medium-priority',
+      'low-priority',
+    ); // Remove priority classes if important
   }
 
   return taskRow;
@@ -184,16 +189,16 @@ function createActionsButtons(taskDetails) {
 /* ------------------------------------------------------------ */
 // Display Task List
 function displayTaskList() {
-  // reset task list
+  // Reset task list
   taskTableBody.innerHTML = '';
 
-  // create task rows and append to table
+  // Create task rows and append to table
   tasks.forEach((task) => {
     const taskRow = createTaskRow(task.taskDetails);
     taskTableBody.appendChild(taskRow);
   });
 
-  // log tasks to console
+  // Log tasks to console
   console.log(JSON.stringify(tasks, null, 2));
 }
 
